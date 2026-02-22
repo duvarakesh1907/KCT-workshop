@@ -1,4 +1,4 @@
-# Workshop Game
+# KCT Workshop 
 
 > **End-to-End Containerization and Cloud Deployment** — Workshop Demo Application
 
