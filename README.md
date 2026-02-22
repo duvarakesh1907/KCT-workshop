@@ -34,6 +34,8 @@
 
 ## 1. Run Locally (After Clone)
 
+### macOS / Linux
+
 ```bash
 # Clone the repository
 git clone https://github.com/duvarakesh1907/KCT-workshop.git
@@ -41,6 +43,23 @@ cd KCT-workshop
 
 # Install dependencies
 npm install
+
+# Start development server
+npm run dev
+```
+
+### Windows (PowerShell)
+
+```powershell
+# Clone the repository
+git clone https://github.com/duvarakesh1907/KCT-workshop.git
+cd KCT-workshop
+
+# Allow script execution (run once if you get execution policy errors)
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+# Install dependencies
+npm.cmd install
 
 # Start development server
 npm run dev
@@ -78,51 +97,42 @@ docker rm workshop-game
 
 Follow these steps on an **EC2 instance** running **Amazon Linux 2** or **Amazon Linux 2023**.
 
-### Step 1: Install Docker
+### Step 1: Update System & Install Git
 
 **Amazon Linux 2023:**
 ```bash
 sudo dnf update -y
-sudo dnf install docker -y
-sudo systemctl start docker
-sudo systemctl enable docker
-sudo usermod -aG docker $USER
-newgrp docker
+sudo dnf install git -y
+git --version
 ```
 
 **Amazon Linux 2:**
 ```bash
 sudo yum update -y
+sudo yum install git -y
+git --version
+```
+
+### Step 2: Install Docker
+
+**Amazon Linux 2023:**
+```bash
+sudo dnf install docker -y
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker --version
+```
+
+**Amazon Linux 2:**
+```bash
 sudo yum install docker -y
 sudo systemctl start docker
 sudo systemctl enable docker
 sudo usermod -aG docker ec2-user
 newgrp docker
-```
-
-**Verify installation:**
-```bash
 docker --version
-```
-
-### Step 2: Install Docker Compose (Optional)
-
-**Amazon Linux 2023:**
-```bash
-sudo dnf install docker-compose-plugin -y
-```
-
-**Amazon Linux 2:**
-```bash
-sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-```
-
-**Verify (AL2023 uses `docker compose`, AL2 uses `docker-compose`):**
-```bash
-docker compose version
-# or
-docker-compose --version
 ```
 
 ### Step 3: Clone the Repository
@@ -132,7 +142,7 @@ git clone https://github.com/duvarakesh1907/KCT-workshop.git
 cd KCT-workshop
 ```
 
-### Step 4: Create ECR Repository (One-time, in AWS Console or CLI)
+### Step 4: Create ECR Repository (One-time) (One-time, in AWS Console or CLI)
 
 **Using AWS CLI:**
 ```bash
@@ -212,21 +222,28 @@ export ECR_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/workshop-ga
 Then run:
 
 ```bash
-# 1. Clone
+# 1. Update, install git & docker
+sudo dnf update -y
+sudo dnf install git docker -y
+sudo systemctl start docker && sudo systemctl enable docker
+sudo usermod -aG docker $USER
+newgrp docker
+
+# 2. Clone
 git clone https://github.com/duvarakesh1907/KCT-workshop.git
 cd KCT-workshop
 
-# 2. Build
+# 3. Build
 docker build -t workshop-game .
 
-# 3. Login to ECR
+# 4. Login to ECR
 aws ecr get-login-password --region $AWS_REGION | docker login --username AWS --password-stdin $ECR_URI
 
-# 4. Tag & Push
+# 5. Tag & Push
 docker tag workshop-game:latest $ECR_URI:latest
 docker push $ECR_URI:latest
 
-# 5. Run (stop/remove existing container first if needed)
+# 6. Run (stop/remove existing container first if needed)
 docker rm -f workshop-game 2>/dev/null
 docker run -d -p 8080:80 --name workshop-game $ECR_URI:latest
 ```
@@ -258,7 +275,7 @@ docker run -d -p 8080:80 --name workshop-game $ECR_URI:latest
 ## Project Structure
 
 ```
-workshop-game/
+KCT-workshop/
 ├── src/
 │   ├── components/NeonTypeGame.tsx
 │   ├── data/words.ts
@@ -268,7 +285,6 @@ workshop-game/
 │   └── index.css
 ├── Dockerfile
 ├── nginx.conf
-├── docker-compose.yml
 └── package.json
 ```
 
