@@ -21,14 +21,14 @@
 
 ### KCT Workshop — Key Topics
 
-| # | Topic | Description |
-|---|-------|-------------|
-| 1 | **What is a Container?** | Lightweight, standalone executable packages that include everything needed to run an application—code, runtime, libraries, and config—ensuring consistency across environments. |
-| 2 | **Why Containerize?** | Portability, consistency from dev to prod, faster deployments, efficient resource use, and easier scaling. |
-| 3 | **Containerization Tools** | Docker, Podman, containerd, Kubernetes, AWS ECR, Amazon EKS. |
-| 4 | **Why Choose a Cloud Platform?** | Scalability, global reach, pay-as-you-go, managed services, and reduced infrastructure overhead. |
-| 5 | **Security Best Practices** | Image scanning, minimal base images, non-root user, secrets management, network isolation, and Security Groups. |
-| 6 | **CI/CD** | Automated build, test, and deployment pipelines for faster, reliable releases. |
+1. **What is a Container?**
+2. **Why Containerize?**
+3. **Containerization Tools**
+4. **Before Cloud: [Netflix Cloud Migration](https://about.netflix.com/en/news/completing-the-netflix-cloud-migration)**
+5. **Why Choose a Cloud Platform?**
+6. **AWS ECS & EKS** (Container orchestration)
+7. **Security Best Practices**
+8. **CI/CD**
 
 > **Demo App:** This repo uses a typing game to demonstrate end-to-end containerization and cloud deployment.
 
@@ -390,3 +390,9 @@ KCT-workshop/
 ## License
 
 Licensed under the Apache License 2.0.
+
+---
+
+## AWS Certification
+
+Validate your cloud skills and grow your career: [AWS Certification](https://aws.amazon.com/certification/)
