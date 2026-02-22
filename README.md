@@ -19,7 +19,28 @@
 
 ## Overview
 
-**Workshop Game** is a fast-paced typing game. Words cascade down the screen—type them accurately before they reach the bottom to score points and survive.
+### KCT Workshop — Key Topics
+
+| # | Topic | Description |
+|---|-------|-------------|
+| 1 | **What is a Container?** | Lightweight, standalone executable packages that include everything needed to run an application—code, runtime, libraries, and config—ensuring consistency across environments. |
+| 2 | **Why Containerize?** | Portability, consistency from dev to prod, faster deployments, efficient resource use, and easier scaling. |
+| 3 | **Containerization Tools** | Docker, Podman, containerd, Kubernetes, AWS ECR, Amazon EKS. |
+| 4 | **Why Choose a Cloud Platform?** | Scalability, global reach, pay-as-you-go, managed services, and reduced infrastructure overhead. |
+| 5 | **Security Best Practices** | Image scanning, minimal base images, non-root user, secrets management, network isolation, and Security Groups. |
+| 6 | **CI/CD** | Automated build, test, and deployment pipelines for faster, reliable releases. |
+
+> **Demo App:** This repo uses a typing game to demonstrate end-to-end containerization and cloud deployment.
+
+### Workshop Outcomes
+
+By the end of this workshop, participants will be able to:
+
+- **Run a web app locally** — Clone a repo, install dependencies, and start a development server (macOS, Linux, Windows)
+- **Containerize with Docker** — Build a production-ready Docker image and run it locally
+- **Deploy on AWS EC2** — Set up an EC2 instance (Amazon Linux), install Docker and Git
+- **Use Amazon ECR** — Create a container registry, push images, and run containers from ECR
+- **Complete the pipeline** — From local development to cloud deployment using industry-standard tools
 
 ---
 
